@@ -4,6 +4,10 @@ $(function () {
         $(".navbar").toggleClass("active");
     });
 
+    $("#btn-top").click(function () {
+        $("html, body").animate({ scrollTop: 0 }, "fast");
+    });
+
     $(window).scroll(function () {
         if ($(this).scrollTop() > 200) {
             $("#btn-top").stop().fadeTo("fast", 1);

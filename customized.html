@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>安心旅遊 | 量身訂製 Customized Tours</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <header class="navbar">
+        <a href="#"><img class="logo" src="images/logo.svg" alt="安心旅遊 Safe Travel"></a>
+        <nav class="menu">
+            <ul class="cn-title-xs">
+                <li><a href="#">Home</a></li>
+                <li><a href="#tours">行程列表</a></li>
+                <li><a href="#contact">量身訂製</a></li>
+                <li><a href="#contact">聯絡我們</a></li>
+            </ul>
+        </nav>
+        <button class="nav-toggle">
+            <span class="line"></span>
+        </button>
+    </header>
+
+    <main>
+        <div id="banner">
+            <div class="square-box">
+                <img src="./images/banner-slide-2.jpg" alt="蒂卡波湖 Lake Tekapo">
+                <div class="circle-box">
+                    <header class="title-l">
+                        <h3 class="en-l">Customized Tours</h3>
+                        <h1 class="cn-title-xl">量身訂製</h1>
+                    </header>
+                </div>
+
+            </div>
+        </div>
+
+        <section>
+            <div class="intro-cus">
+                <div class="text-cus cn-content-m">
+                    <p>
+                        無論您是對行程已有想法，或需要規劃上的建議，安心旅遊皆歡迎您與我們聯繫。<br />
+                        我們將聆聽您的需求，為您量身訂製最適合您的行程。
+                    </p>
+                    <p>
+                        您可選擇您最方便的模式與我們聯繫：<br />
+                        (+886) 02-8888-8888 &nbsp;|&nbsp; <a
+                            href="mailto:service@safetravel.com">service@safetravel.com</a>
+                    </p>
+                    <a class="btn-square en-s">LINE<img src="./images/arrow-right.svg" alt="箭頭 arrow"></a>
+                </div>
+            </div>
+
+            <form action="" method="post" id="form-customized" class="cn-content-m" name="form-customized"
+                title="量身訂製表單">
+                <p class="requried">「<span>*</span>」為必填</p>
+                <div class="input-half">
+                    <label for="user-name">姓名 <span>*</span></label>
+                    <input type="text" id="user-name" name="user-name" title="請輸入姓名" placeholder="請輸入姓名" required>
+                </div>
+                <div class="input-half">
+                    <label for="email">Email <span>*</span></label>
+                    <input type="email" id="email" name="email" title="請輸入Email" placeholder="請輸入 Email" required>
+                </div>
+                <div class="input-half">
+                    <label for="phone">電話（建議以手機為主）<span>*</span></label>
+                    <input type="tel" id="phone" name="phone" title="請輸入電話號碼" placeholder="0987654321" required>
+                </div>
+                <div class="input-half">
+                    <label for="line-id">LINE ID</label>
+                    <input type="text" id="line-id" name="line-id" title="請輸入LineID" placeholder="請輸入 LINE ID">
+                </div>
+                <div class="input-half">
+                    <label for="available-time">方便聯絡時間</label>
+                    <input type="text" id="available-time" name="available-time" title="請輸入方便聯絡時間" placeholder="">
+                </div>
+                <div class="input-half">
+                    <label for="departure">出發地 <span>*</span></label>
+                    <input type="text" id="departure" name="departure" title="請輸入出發地" placeholder="">
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="left-text cn-content-s">
+            <a href="#"><img class="logo" src="images/logo.svg" alt="安心旅遊 Safe Travel"></a>
+            <div class="text-box">
+                <p>交觀甲字第123456號．品保北8888號</p>
+                <a href="#">隱私權保護政策</a>
+                <small class="en-xs">Copyright &copy; 2024 Safe Travel. All Rights Reserved</small>
+            </div>
+        </div>
+        <div class="right-text cn-content-s">
+            <h3 class="en-m">Contact</h3>
+            <p>(+886) 02-8888-8888 </p>
+            <a href="mailto: service@safetravel.com">service@safetravel.com</a>
+            <p>台北市內湖區一二路123號1樓</p>
+            <div class="follow-us">
+                <span class="en-xs">Follow us</span>
+                <a href="#"><img src="./images/icon-line.svg" alt="安心旅遊官方 Line"></a>
+                <a href="#"><img src="./images/icon-fb.svg" alt="安心旅遊 FB"></a>
+            </div>
+        </div>
+        <button id="btn-top"></button>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
