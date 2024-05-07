@@ -1239,13 +1239,13 @@ section {
 }
 
 .circle-box {
-    height: 100vh;
+    height: 116vh;
     aspect-ratio: 1 / 1;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     position: absolute;
-    left: 8%;
+    left: 6%;
     top: 50%;
     z-index: 3;
     transform: translate(-50%, -50%);
@@ -1268,7 +1268,7 @@ section {
 } */
 
 .title-l {
-    margin-right: 18%;
+    margin-right: 16%;
     text-align: center;
 }
 
@@ -1289,7 +1289,7 @@ section {
 
 @media (min-width: 1201px) {
     .square-box {
-        height: 75vh;
+        height: 80vh;
     }
 }
 
@@ -1463,7 +1463,7 @@ section {
 
 /* Customized Tous */
 .intro-cus {
-    padding: 48px 12%;
+    padding: 48px 16%;
     color: var(--light);
     background-color: var(--dark);
     border-radius: 16px;
@@ -1495,8 +1495,8 @@ section {
 
 /* form */
 form {
-    margin: 24px 0;
-    padding: 24px 12%;
+    margin-top: 24px;
+    padding: 24px 16% 40px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -1514,24 +1514,31 @@ form span {
     color: var(--warning);
 }
 
-.input-half {
-    width: 48%;
+.input-half, .input-full {
     margin-top: 24px;
     display: flex;
     flex-direction: column;
 }
 
-form input{
+.input-half {
+    width: 48%;
+}
+
+.input-full {
+    width: 100%;
+}
+
+.input-half:nth-child(-n+3) {
+    margin-top: 0;
+}
+
+form input, form select, form textarea{
     padding: 12px 8px;
     margin-top: 4px;
     color: var(--dark);
     border: none;
     /* outline: none;	 */
     /* 取消有些瀏覽器的預測外框 */
-}
-
-form textarea {
-
 }
 
 form input:focus,
@@ -1546,6 +1553,20 @@ input::placeholder {
     font-size: 0.75rem;
     letter-spacing: 0.1em;
 }
+@media (max-width: 1200px) {
+    .intro-cus {
+        padding: 48px 8%;
+    }
+
+    form {
+        padding: 24px 8% 40px;
+    }
+}
+@media (max-width: 992px) {
+
+}
+@media (max-width: 768px) {}
+@media (max-width: 576px) {}
 
 /*
 @media (min-width: 1401px) {}

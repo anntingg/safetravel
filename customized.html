@@ -82,7 +82,67 @@
                     <label for="departure">出發地 <span>*</span></label>
                     <input type="text" id="departure" name="departure" title="請輸入出發地" placeholder="">
                 </div>
-
+                <div class="input-half">
+                    <label for="region">預計旅遊地區 <span>*</span></label>
+                    <select name="region" id="region" required>
+                        <option value="">請選擇</option>
+                        <option value="南北島全覽">南北島全覽</option>
+                        <option value="北島">北島</option>
+                        <option value="南島">南島</option>
+                        <option value="尚未確定">尚未確定</option>
+                    </select>
+                </div>
+                <div class="input-half">
+                    <label for="number-of-people">預計人數 <span>*</span></label>
+                    <input type="text" id="number-of-people" name="number-of-people" title="請輸入預計人數"
+                        placeholder="請輸入？大人？小孩">
+                </div>
+                <div class="input-half">
+                    <label for="departure-date">預計出發日</label>
+                    <input type="date" id="departure-date" name="departure-date" title="請選擇預計出發日">
+                </div>
+                <div class="input-half">
+                    <label for="days">預計天數</label>
+                    <input type="number" id="days" name="days" title="請輸入預計天數" placeholder="請輸入數字">
+                </div>
+                <div class="input-half">
+                    <label for="reference-1">參考行程 1</label>
+                    <select name="reference-1" id="reference-1">
+                        <option value="">請選擇</option>
+                        <option value="經典南北島全覽 13 日">經典南北島全覽 13 日</option>
+                        <option value="南島深度遊 10 日">南島深度遊 10 日</option>
+                        <option value="北島深度遊 6 日">北島深度遊 6 日</option>
+                        <option value="南島海岸遊 6 日">南島海岸遊 6 日</option>
+                        <option value="南島冒險遊 4 日">南島冒險遊 4 日</option>
+                        <option value="南島攝影 6 日">南島攝影 6 日</option>
+                        <option value="南北島登山遊 10 日">南北島登山遊 10 日</option>
+                        <option value="南島單車遊 10 日">南島單車遊 10 日</option>
+                        <option value="南島滑雪遊 8 日">南島滑雪遊 8 日</option>
+                    </select>
+                </div>
+                <div class="input-half">
+                    <label for="reference-1">參考行程 2</label>
+                    <select name="reference-1" id="reference-1">
+                        <option value="">請選擇</option>
+                        <option value="經典南北島全覽 13 日">經典南北島全覽 13 日</option>
+                        <option value="南島深度遊 10 日">南島深度遊 10 日</option>
+                        <option value="北島深度遊 6 日">北島深度遊 6 日</option>
+                        <option value="南島海岸遊 6 日">南島海岸遊 6 日</option>
+                        <option value="南島冒險遊 4 日">南島冒險遊 4 日</option>
+                        <option value="南島攝影 6 日">南島攝影 6 日</option>
+                        <option value="南北島登山遊 10 日">南北島登山遊 10 日</option>
+                        <option value="南島單車遊 10 日">南島單車遊 10 日</option>
+                        <option value="南島滑雪遊 8 日">南島滑雪遊 8 日</option>
+                    </select>
+                </div>
+                <div class="input-full">
+                    <label for="request">其他行程需求</label>
+                    <textarea id="request" name="request" cols="100" rows="10"></textarea>
+                </div>
+                <div class="input-full">
+                    <label for="message">備註</label>
+                    <textarea id="message" name="message" cols="100" rows="10"></textarea>
+                </div>
             </form>
 
         </section>
