@@ -18,6 +18,43 @@ $(function () {
     });
 })
 
+// title-m effect
+const titleM = document.querySelectorAll('.title-m');
+
+const handleTitleM = () => {
+    titleM.forEach(title => {
+        const titleTop = title.getBoundingClientRect().top;
+
+        if (titleTop < (window.innerHeight / 2)) {
+            title.classList.add("active");
+        } else {
+            title.classList.remove("active");
+        }
+    });
+};
+handleTitleM();
+window.addEventListener("scroll", handleTitleM);
+window.addEventListener("resize", handleTitleM);
+
+// booking section - circle effect
+
+const steps = document.querySelectorAll(".step");
+
+const handleStep = () => {
+    steps.forEach(step => {
+        const stepTop = step.getBoundingClientRect().top;
+
+        if (stepTop < (window.innerHeight / 2)) {
+            step.classList.add("active");
+        } else {
+            step.classList.remove("active");
+        }
+    });
+}
+handleStep();
+window.addEventListener("scroll", handleStep);
+window.addEventListener("resize", handleStep);
+
 // banner
 /*
 window.addEventListener("scroll", () => {

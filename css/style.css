@@ -67,6 +67,11 @@ a {
     --blue-gradient:
         linear-gradient(45deg, rgba(38, 127, 217, 0.15) 0, rgba(38, 127, 217, 0) 40%, rgba(38, 127, 217, 0.15) 100%),
         linear-gradient(45deg, #E9F2FB, #E9F2FB);
+    --clip-gradient-dark:
+        linear-gradient(70deg, #0F3357 0%, #0F3357 30%, #2680D9 35%, #26D9D9 50%, #FAEB9E 65%, #0F3357 70%, #0F3357 100%);
+    --clip-gradient-light:
+        linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)),
+        linear-gradient(70deg, #E9F2FB 0%, #E9F2FB 30%, #2680D9 35%, #26D9D9 50%, #FAEB9E 65%, #E9F2FB 70%, #E9F2FB 100%);
     /* --dark-gradient:
         linear-gradient(180deg, rgba(15, 51, 87, 0) 0, rgba(15, 51, 87, 0.4) 40%, rgba(15, 51, 87, 0) 100%); */
     --bg-navbar: rgba(233, 242, 251, 0.7);
@@ -313,7 +318,7 @@ a {
         height: 48px;
         padding: 0;
         background: transparent;
-        transition: 0.5s;
+        transition: all 0.5s ease-in-out;
     }
 
     .menu ul {
@@ -327,7 +332,7 @@ a {
         top: 48px;
         background-color: var(--light);
         opacity: 0;
-        transition: 0.5s;
+        transition: all 0.5s ease-in-out;
     }
 
     .navbar.active {
@@ -394,7 +399,7 @@ a {
     .line,
     .line::after,
     .line::before {
-        transition: 0.5s;
+        transition: all 0.5s ease-in-out;
     }
 
     .line.active {
@@ -425,7 +430,7 @@ a {
     border: none;
     cursor: pointer;
     background-image: url("../images/btn-top-default.svg");
-    transition: 0.5s;
+    transition: all 0.5s ease-in-out;
 }
 
 #btn-top:hover {
@@ -566,7 +571,7 @@ footer {
     background-image: var(--gradient);
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: transparent;
     filter: drop-shadow(1px 1px 2px var(--dark-40));
 }
 
@@ -617,19 +622,37 @@ section {
 
 /* title */
 .title-m h1 {
-    width: fit-content;
     margin: 2px 0 16px 0;
     position: relative;
 }
 
+.title-m h1, .title-m h3{
+    width: max-content;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 500%;
+    background-position: right;
+    transition: all 1.5s ease-in-out;
+}
+
+.title-m.active h1, .title-m.active h3{
+    background-position: left;
+}
+
 .title-m h1::after {
     content: "";
-    width: 100%;
+    width: 0;
     height: 3px;
     position: absolute;
     left: 0;
     bottom: -16px;
     background: var(--gradient);
+    transition: all 0.5s 0.5s ease-in-out;
+}
+
+.title-m.active h1::after {
+    width: 100%;
 }
 
 @media (max-width: 992px) {
@@ -674,7 +697,7 @@ section {
     left: -100%;
     top: 0;
     background: var(--bg-gradient) padding-box, var(--gradient) border-box;
-    transition: all 0.5s;
+    transition: all 0.5s ease-in-out;
 }
 
 .btn-square:hover::after {
@@ -690,9 +713,23 @@ section {
     white-space: nowrap;
 }
 
-.btn-square img {
+.btn-square span {
     width: 30px;
     margin-left: 4px;
+    display: flex;
+    overflow: hidden;
+}
+
+.btn-square span img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: translateX(-100%);
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-square:hover span img{
+    transform: translateX(0);
 }
 
 /* about section*/
@@ -846,6 +883,10 @@ section {
     background-color: var(--dark);
 }
 
+#tours .title-m h1, #tours .title-m h3{
+    background-image: var(--clip-gradient-light);
+}
+
 .title-box {
     padding-right: 24px;
     flex: 1;
@@ -893,7 +934,7 @@ section {
     right: 0;
     z-index: 2;
     background-color: var(--dark-20);
-    transition: 0.5s;
+    transition: all 0.5s ease-in-out;
 }
 
 .tour:hover .mask::after {
@@ -906,8 +947,14 @@ section {
     top: 0;
     right: 0;
     z-index: 1;
+    transition: all 0.5s ease-in-out;
 }
 
+.tour:hover img {
+    transform: scale(1.1);
+}
+
+/* border animation */
 .content {
     width: calc(100% - 40px);
     height: calc(100% - 40px);
@@ -920,12 +967,39 @@ section {
     z-index: 3;
     color: var(--light);
     border: 2px solid transparent;
-    border-image: var(--transparent) 30%;
-    /* transition: 0.5s; */
 }
 
-.tour:hover .content {
+.content::before, .content::after {
+    content: "";
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    border: solid transparent;
     border-image: var(--gradient) 30%;
+    transform-origin: center;
+    transition: all 0.5s ease-in-out;
+}
+
+.content::before {
+    border-width: 2px 0;
+    transform: scaleX(0);
+}
+
+.content::after {
+    border-width: 0 2px;
+    transform: scaleY(0);
+}
+
+.tour:hover .content::before  {
+    transform: scaleX(1);
+}
+
+.tour:hover .content::after  {
+    transform: scaleY(1);
 }
 
 .content h2 {
@@ -940,22 +1014,20 @@ section {
     filter: drop-shadow(1px 1px 2px var(--dark-40));
 }
 
-.content::after {
-    content: "";
+.content .center-line {
     width: 30%;
     height: 2px;
+    display: block;
     position: absolute;
-    left: 50%;
-    top: 50%;
     z-index: 4;
-    transform: translate(-50%, -50%);
     background: var(--gradient);
-    opacity: 1;
-    transition: 0.5s;
+    transform: scaleX(1);
+    transform-origin: center;
+    transition: all 0.5s ease-in-out;
 }
 
-.tour:hover .content::after {
-    opacity: 0;
+.tour:hover .center-line {
+    transform: scaleX(0);
 }
 
 .content p {
@@ -973,7 +1045,7 @@ section {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     opacity: 0;
-    transition: 0.5s;
+    transition: all 0.5s ease-in-out;
 }
 
 .tour:hover .content p {
@@ -1019,6 +1091,10 @@ section {
     justify-content: center;
 }
 
+#booking .title-m h1, #booking .title-m h3 {
+    background-image: var(--clip-gradient-dark);
+}
+
 .step-box {
     width: 100%;
     height: 400px;
@@ -1032,10 +1108,13 @@ section {
 .step {
     width: 400px;
     height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     background: var(--blue-gradient) padding-box, var(--gradient) border-box;
     border: 2px solid transparent;
-    border-radius: 999px;
+    border-radius: 50%;
 }
 
 .step::after {
@@ -1043,10 +1122,13 @@ section {
     width: 56%;
     height: 3px;
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
     background: var(--gradient);
+    transform: scaleX(0);
+    transition: all 0.5s 0.5s ease-in-out;
+}
+
+.step.active::after {
+    transform: scaleX(1);
 }
 
 .number {
@@ -1184,23 +1266,14 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* position: relative; */
     background-color: var(--dark-70);
-    transition: 0.5s;
+    transition: all 0.5s ease-in-out;
 }
 
 .left-box:hover,
 .right-box:hover {
     background-color: transparent;
 }
-
-/* .left-box::after {
-    content: "";
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    backdrop-filter: brightness(170%);
-} */
 
 .left-box {
     border-right: 1px solid var(--light);
@@ -1210,14 +1283,8 @@ section {
     border-left: 1px solid var(--light);
 }
 
-.contact-text .title-m {
-    color: var(--light);
-    transition: 0.5s;
-}
-
-.left-box:hover .contact-text .title-m,
-.right-box:hover .contact-text .title-m {
-    color: var(--dark);
+#contact .title-m h1, .contact-text .title-m h3 {
+    background-image: var(--clip-gradient-light);
 }
 
 .contact-text p {
@@ -1225,13 +1292,13 @@ section {
     margin-top: 12%;
     text-align: justify;
     color: var(--light);
-    transition: 0.5s;
+    transition: all 0.5s ease-in-out;
 }
 
-.left-box:hover .contact-text p,
+/* .left-box:hover .contact-text p,
 .right-box:hover .contact-text p {
     color: var(--dark);
-}
+} */
 
 .left-box .btn-square,
 .right-box .btn-square {
@@ -1241,6 +1308,11 @@ section {
 .left-box:hover .btn-square::after,
 .right-box:hover .btn-square::after {
     left: 0;
+}
+
+.left-box:hover .btn-square span img,
+.right-box:hover .btn-square span img {
+    transform: translateX(0);
 }
 
 @media (max-width: 1200px) {
@@ -1681,7 +1753,7 @@ input::placeholder {
     left: -100%;
     top: 0;
     background: var(--bg-gradient) padding-box, var(--gradient) border-box;
-    transition: all 0.5s;
+    transition: all 0.5s ease-in-out;
 }
 
 .btn-form #customized-submit:hover::after {
