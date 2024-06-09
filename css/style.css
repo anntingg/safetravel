@@ -74,7 +74,7 @@ a {
         linear-gradient(70deg, #E9F2FB 0%, #E9F2FB 30%, #2680D9 35%, #26D9D9 50%, #FAEB9E 65%, #E9F2FB 70%, #E9F2FB 100%);
     /* --dark-gradient:
         linear-gradient(180deg, rgba(15, 51, 87, 0) 0, rgba(15, 51, 87, 0.4) 40%, rgba(15, 51, 87, 0) 100%); */
-    --bg-navbar: rgba(233, 242, 251, 0.7);
+    --bg-navbar: rgba(233, 242, 251, 0.8);
     --dark-20: rgba(15, 51, 87, 0.2);
     --dark-40: rgba(15, 51, 87, 0.4);
     --dark-70: rgba(15, 51, 87, 0.7);
@@ -286,6 +286,12 @@ a {
     align-items: center;
     position: fixed;
     z-index: 99;
+    background: transparent;
+    transition: all 0.5s ease-in-out;
+    animation: bannerFadeIn 1s 1.3s both ease-in-out;
+}
+
+.navbar.background {
     background: var(--bg-navbar);
     backdrop-filter: blur(10px);
 }
@@ -513,95 +519,139 @@ footer {
 #banner-index {
     height: 100vh;
     display: flex;
+    justify-content: center;
     align-items: center;
+    background: var(--bg-gradient);
+    overflow: hidden;
+
+}
+
+.banner-logo {
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    object-fit: contain;
+    object-position: center;
+    opacity: 0.5;
+    mix-blend-mode: overlay;
+}
+
+.banner-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 3;
+    animation: bannerScale 1s 1.3s both ease-in-out;
+}
+
+.banner-text h1,
+.banner-text h2 {
+    margin: 8px 0;
+    display: flex;
+    justify-content: center;
+
+
+}
+
+.banner-text span {
+    display: block;
+}
+
+.text1 {
+    animation: text1 1s both ease-in-out;
+}
+
+.text2 {
+    animation: text2 1s 0.2s both ease-in-out;
+}
+
+.text3 {
+    animation: text3 1s 0.1s both ease-in-out;
+}
+
+.text4 {
+    animation: text4 1s 0.3s both ease-in-out;
+}
+
+.banner-img {
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    animation: bannerFadeIn 1s 1.3s both ease-in-out;
+}
+
+.banner-text p {
+    margin-top: 40px;
+    text-align: center;
     overflow: hidden;
 }
 
-/* #banner-index.fixed {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-} */
-
-#banner-index img {
-    width: 23vw;
-    height: 23vw;
-    position: absolute;
-    z-index: 2;
-    right: 8%;
-    top: 50%;
-    transform: translateY(-50%);
-    border-radius: 50%;
-    animation: imgEnlarge 2s 0.5s both;
-}
-
-@keyframes imgEnlarge {
-    from {
-        width: 32vw; 
-        height: 32vw;
-        right: 12%;
-        border-radius: 50%;
-    }
-    to {
-        width: 100%; 
-        height: 100%;
-        right: 0%;
-        border-radius: 0;
-    }
-}
-
-.banner-en,
-.banner-cn,
-.banner-text {
-    margin: 52px 0;
-    left: 7vw;
-}
-
-.banner-en,
-.banner-cn {
-    position: relative;
-    z-index: 3;
-}
-
-.banner-en h2,
-.banner-en h3 {
-    width: fit-content;
-    line-height: 100%;
-    background-image: var(--gradient);
+.banner-text p span {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    filter: drop-shadow(1px 1px 2px var(--dark-40));
+    background-image: var(--clip-gradient-dark);
+    background-size: 400%;
+
+    animation: bannerMove 0.5s 2s both ease-in-out, bannerShine 4s 2s both;
 }
 
-.banner-en h2 {
-    margin-bottom: 8px;
+
+@keyframes bannerShine {
+    from { background-position: right;}
+    to { background-position: left;}
 }
 
-.banner-cn h1,
-.banner-cn h2 {
-    color: var(--dark);
-    filter: drop-shadow(1px 1px 2px var(--dark-40));
-    animation: colorChange 2s 0.5s both;
+
+@keyframes text1 {
+    from { transform: translateY(100%); opacity: 0;}
+    to { transform: translateY(0); opacity: 1;}
 }
 
-@keyframes colorChange {
-    from {color: var(--dark);}
-    to {color: var(--light);}
+@keyframes text2 {
+    from { transform: translateY(300%); opacity: 0;}
+    to { transform: translateY(0); opacity: 1;}
 }
 
-.banner-cn h1 {
-    margin-bottom: 3%;
+@keyframes text3 {
+    from { transform: translateY(200%); opacity: 0;}
+    to { transform: translateY(0); opacity: 1;}
 }
 
-.banner-text {
-    position: relative;
-    z-index: 1;
-    left: 7vw;
-    color: var(--dark);
+@keyframes text4 {
+    from { transform: translateY(400%); opacity: 0;}
+    to { transform: translateY(0); opacity: 1;}
 }
 
+@keyframes bannerScale {
+    from { transform: scale(2);}
+    to { transform: scale(1);}
+}
+
+@keyframes bannerFadeIn {
+    from { display: none; opacity: 0;}
+    to { display: flex; opacity: 1;}
+}
+
+@keyframes bannerMove {
+    from {transform: translateY(100%);}
+    to {transform: translateY(0);}
+}
+
+@media (max-width: 576px) {
+    .banner-text p {
+        width: 72%;
+    }
+
+    @keyframes bannerScale {
+        from { transform: scale(1.5);}
+        to { transform: scale(1);}
+    }
+}
 
 /* sections shared*/
 section {

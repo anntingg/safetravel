@@ -18,10 +18,34 @@ $(function () {
     });
 })
 
-// title-m effect
-const titleM = document.querySelectorAll('.title-m');
+// temporarily disable wheel function when the animation is playing
+const animationDuration = 2300;     // 2.3s
 
+function disableScroll(event) {
+    event.preventDefault();
+}
+window.addEventListener("wheel", disableScroll, { passive: false });
+
+setTimeout(() => {
+    window.removeEventListener("wheel", disableScroll);
+}, animationDuration);
+
+// navbar effect
+const handleNavbar = () => {
+    const navbar = document.querySelector(".navbar");
+
+    if (window.scrollY > 200) {
+        navbar.classList.add("background");
+    } else {
+        navbar.classList.remove("background");
+    }
+}
+window.addEventListener("scroll", handleNavbar);
+
+// title-m effect
 const handleTitleM = () => {
+    const titleM = document.querySelectorAll('.title-m');
+
     titleM.forEach(title => {
         const titleTop = title.getBoundingClientRect().top;
 
@@ -37,7 +61,6 @@ window.addEventListener("scroll", handleTitleM);
 window.addEventListener("resize", handleTitleM);
 
 // booking section - circle effect
-
 const steps = document.querySelectorAll(".step");
 
 const handleStep = () => {
@@ -54,27 +77,3 @@ const handleStep = () => {
 handleStep();
 window.addEventListener("scroll", handleStep);
 window.addEventListener("resize", handleStep);
-
-// banner
-/*
-window.addEventListener("scroll", () => {
-    const banner = document.querySelector("#banner-index");
-    const bannerImg = document.querySelector("#banner-index img");
-    const aboutSection = document.querySelector("#about");
-
-    let bannerHeight = banner.offsetHeight;
-    let aboutSectionTop = aboutSection.getBoundingClientRect().top;
-
-    let newWidth = 32 + (window.scrollY / 2);
-    newWidth = Math.min(newWidth, 100);
-
-    bannerImg.style.width = newWidth + 'vw';
-    bannerImg.style.height = newWidth + 'vw';
-
-    if (newWidth === 100 ) {
-        banner.classList.remove("fixed");
-    } else {
-        banner.classList.add("fixed");
-    }
-});
-*/
