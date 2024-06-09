@@ -551,8 +551,6 @@ footer {
     margin: 8px 0;
     display: flex;
     justify-content: center;
-
-
 }
 
 .banner-text span {
@@ -644,7 +642,7 @@ footer {
 
 @media (max-width: 576px) {
     .banner-text p {
-        width: 72%;
+        width: 68%;
     }
 
     @keyframes bannerScale {
