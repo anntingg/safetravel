@@ -603,7 +603,7 @@ footer {
     background-image: var(--clip-gradient-dark);
     background-size: 400%;
 
-    animation: bannerMove 0.5s 2s both ease-in-out, bannerShine 4s 2s both;
+    animation: bannerMove 0.5s 2s both ease-in-out, bannerShine 3.5s 2s both;
 }
 
 
