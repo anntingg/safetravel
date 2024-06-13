@@ -874,8 +874,8 @@ section {
 
 .border {
     width: 84%;
-    height: 60vh;
-    margin: 20vh 0;
+    height: 64vh;
+    margin: 18vh 0;
     position: relative;
 }
 
@@ -1053,11 +1053,6 @@ section {
 @media (max-width: 576px) {
     #about {
         height: 1400px;
-    }
-
-    .border {
-        height: 64vh;
-        margin: 18vh 0;
     }
 
     .border::before, .border::after {
