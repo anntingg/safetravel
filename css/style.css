@@ -967,8 +967,6 @@ section {
     position: absolute;
     top: 20%;
     left: 0;
-
-    will-change: transform;
 }
 
 .intro {
