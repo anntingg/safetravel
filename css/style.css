@@ -1018,6 +1018,7 @@ section {
     .intro {
         width: 640px;
         padding: 56px 40px;
+        transition: all 0s linear;
     }
 
     .intro h3+p {
