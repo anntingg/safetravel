@@ -33,7 +33,6 @@ handleStep();
 window.addEventListener("scroll", handleStep);
 window.addEventListener("resize", handleStep);
 
-
 // about section - parallax scrolling effect
 window.addEventListener("scroll", () => {
     const aboutSection = document.querySelector("#about");
@@ -52,6 +51,7 @@ window.addEventListener("scroll", () => {
         let scale2 = 1 - Math.abs(aboutSectionTop) / window.innerHeight / 10;
 
         borderBox.style.transform = `translateY(${-aboutSectionTop}px)`;
+        
         intro1.style.transform = `scale(1)`;
         intro2.style.transform = `translateY(${translateValue1}px)`;
         intro3.style.transform = `translateY(${translateValue2}px)`;
