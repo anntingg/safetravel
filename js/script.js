@@ -32,7 +32,7 @@ window.addEventListener("scroll", handleNavbar);
 
 // title-m effect
 const handleTitleM = () => {
-    const titleM = document.querySelectorAll('.title-m');
+    const titleM = document.querySelectorAll(".title-m");
 
     titleM.forEach(title => {
         const titleTop = title.getBoundingClientRect().top;
@@ -48,20 +48,3 @@ handleTitleM();
 window.addEventListener("scroll", handleTitleM);
 window.addEventListener("resize", handleTitleM);
 
-// booking section - circle effect
-const steps = document.querySelectorAll(".step");
-
-const handleStep = () => {
-    steps.forEach(step => {
-        const stepTop = step.getBoundingClientRect().top;
-
-        if (stepTop < (window.innerHeight / 2)) {
-            step.classList.add("active");
-        } else {
-            step.classList.remove("active");
-        }
-    });
-}
-handleStep();
-window.addEventListener("scroll", handleStep);
-window.addEventListener("resize", handleStep);

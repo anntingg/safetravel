@@ -314,6 +314,12 @@ a {
     list-style-type: none;
 }
 
+.menu ul li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .menu a {
     padding: 20px;
 }
@@ -712,6 +718,7 @@ footer {
 /* sections shared*/
 section {
     padding: 50px 4vw;
+    transition: all 1s ease-in-out;
 }
 
 @media (max-width: 1200px) {
@@ -860,25 +867,80 @@ section {
 
 /* about section*/
 #about {
+    height: 1600px;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .border {
-    width: 100%;
-    max-width: 1440px;
-    margin: 50px 0;
-    padding: 100px 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    width: 84%;
+    height: 60vh;
+    margin: 20vh 0;
     position: relative;
-    border: 10px solid var(--primary);
-    border-radius: 16px;
 }
 
+/* border line effect */
+.border::before, .border::after {
+    content: "";
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.border::before {
+    border-top: 8px solid var(--primary);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: all 1s linear;
+}
+
+.border::after {
+    border: solid var(--primary);
+    border-width: 0 8px;
+    transform: scaleY(0);
+    transform-origin: top center;
+    transition: all 1s 1s linear;
+}
+
+.border.active::before  {
+    transform: scaleX(1);
+}
+
+.border.active::after  {
+    transform: scaleY(1);
+}
+
+.bottom-left, .bottom-right {
+    width: 50%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    border-bottom: 8px solid var(--primary);
+    transform: scaleX(0);
+    transition: all 1s 2s linear;
+}
+
+.bottom-left {
+    top: 0;
+    left: 0;
+    transform-origin: left center;
+}
+
+.bottom-right {
+    top: 0;
+    right: 0;
+    transform-origin: right center;
+}
+
+.border.active .bottom-left,
+.border.active .bottom-right {
+    transform: scaleX(1);
+}
+
+/* about content */
 .about-box {
     width: 800px;
     height: 128px;
@@ -902,21 +964,26 @@ section {
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    position: absolute;
+    top: 20%;
+    left: 0;
 }
 
 .intro {
     width: 800px;
-    padding: 50px 0 50px 50px;
-    margin: 10px 0;
+    padding: 80px 0 80px 48px;
+    margin: 8px 0;
+    position: relative;
+    z-index: 1;
     background: var(--blue-gradient) padding-box, var(--gradient) border-box;
     border: 2px solid transparent;
     border-radius: 16px;
+    transition: all 0.3s linear;
 }
 
 .intro h3 {
-    width: fit-content;
+    width: max-content;
     margin-bottom: 24px;
     padding-left: 16px;
     position: relative;
@@ -936,15 +1003,22 @@ section {
     text-align: justify;
 }
 
-
 @media (max-width: 1200px) {
+    #about {
+        height: 2000px;
+    }
+
+    .border {
+        width: 100%;
+    }
+
     .about-box {
         width: 640px;
     }
 
     .intro {
         width: 640px;
-        padding: 40px;
+        padding: 56px 40px;
     }
 
     .intro h3+p {
@@ -959,11 +1033,14 @@ section {
 
     .intro {
         width: 560px;
-        padding: 32px;
     }
 }
 
 @media (max-width: 768px) {
+    .intro-box  {
+        top: 12%;
+    }
+
     .about-box {
         width: 480px;
     }
@@ -974,10 +1051,21 @@ section {
 }
 
 @media (max-width: 576px) {
+    #about {
+        height: 1400px;
+    }
+
     .border {
-        margin: 50px 0;
-        padding: 100px 0 0;
-        border: 0px solid var(--primary);
+        height: 64vh;
+        margin: 18vh 0;
+    }
+
+    .border::before, .border::after {
+        display: none;
+    }
+
+    .bottom-left, .bottom-right {
+        display: none;
     }
 
     .about-box {
@@ -986,7 +1074,7 @@ section {
 
     .intro {
         width: 100%;
-        padding: 20px;
+        padding: 40px 20px;
     }
 
     .intro h3 {
@@ -1330,11 +1418,8 @@ section {
     transition: all 0.25s 1.25s linear;
 }
 
-.step.active .right-circle::after {
-    transform: rotate(180deg);
-}
-
-.step.active .left-circle::after {
+.step.active .right-circle::after,
+.step.active .left-circle::after  {
     transform: rotate(180deg);
 }
 
@@ -1732,11 +1817,23 @@ section {
     border-radius: 8px;
     box-shadow: 2px 4px 8px var(--dark-40);
     overflow: hidden;
+    transition: all 0.5s ease-in-out;
 }
 
 .tour-card img {
     aspect-ratio: 4 / 3;
+    transition: all 0.5s ease-in-out;
 }
+
+.tour-card:hover {
+    transform: translateY(-3%);
+}
+
+.tour-card:hover img {
+    filter: brightness(110%);
+    transform: scale(1.05);
+}
+
 
 .tour-card:hover .btn-square::after {
     left: 0;
