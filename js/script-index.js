@@ -45,8 +45,6 @@ window.addEventListener("scroll", () => {
     const intro2 = document.querySelector(".intro2");
     const intro3 = document.querySelector(".intro3");
 
-    console.log(aboutSectionTop);
-
     if (aboutSectionTop <= 0 && aboutSectionBottom >= window.innerHeight) {
         let translateValue1 = Math.max(aboutSectionTop, -250);
         let translateValue2 = Math.max(aboutSectionTop, -500);
