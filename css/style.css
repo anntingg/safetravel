@@ -532,7 +532,6 @@ footer {
     align-items: center;
     background: var(--bg-gradient);
     overflow: hidden;
-
 }
 
 .banner-logo {
@@ -583,7 +582,7 @@ footer {
 }
 
 .banner-img {
-    height: 100%;
+    height: 100vh;      /* same as .benner-index*/
     position: absolute;
     left: 0;
     top: 0;
